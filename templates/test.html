@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Оценка рисков ЖЦ ИС</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#hide").click(function(){
+        $("p").hide();
+      });
+      $("#show").click(function(){
+        $("p").show();
+      });
+    });
+    </script>
+
+    <!--
+                    <p>If you click on the "Hide" button, I will disappear.</p>
+                    <button class="button" id="hide">Hide</button>
+                    <button class="button" id="show">Show</button>
+    -->
+</head>
+<body>
+
+<div class="main-header">
+    <div class="div-title">
+        <h1><a href="{{ url_for('index') }}">Оценка рисков Жизненных Циклов Информационной Системы</a></h1>
+    </div>
+    <nav class="list-of-ststs">
+        <ul class="navigation-list">
+            <li class="element-of-list"><a href="{{ url_for('decision_management_process') }}">ГОСТ Р 59338-2021</a></li>
+            <li class="element-of-list"><a href="">ГОСТ Р 59000-2021</a></li>
+            <li class="element-of-list"><a href="">ГОСТ Р 59000-2021</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="main-body management-process-main">
+    <div class="container management-process-title">
+        <div class="management-process-title-inner">
+            <h2 class="management-process-item-text management-process-item-title-text">Оценка рисков процесса управления решениями</h2>
+        </div>
+    </div>
+
+    {% if structure == None %}
+
+    <div class="container management-process-item management-process-item-system">
+        <p class="management-process-item-text text"> При оценке рисков процесса управления решениями структуру рсистемы разделяют на "простую" и "сложную".</p>
+        <p class="management-process-item-text text"> В зависимости от структуры происходит дальнейшая оценка рисков по трём количественным показателям:</p>
+        <p class="management-process-item-text text"> – риску нарушения надёжности реализации процесса управления  решениями; </p>
+        <p class="management-process-item-text text"> – риску нарушения требований по защите информации в процессе управления решениями; </p>
+        <p class="management-process-item-text text"> – интегральный риск нарушения реализации процесса управления решениями с учётом требований по защите информации.</p>
+        <p class="management-process-item-text text"> Выберите <span  class="tooltip">структуру</span> оцениваемой системы: </p>
+        <div class="div-for-structure-form">
+            <form class="form-structure" method="post" action="decision-management-process/next-1">
+                <ul class="list-of-structure">
+                   <li class="element-of-list">
+                       <input class="checkbox-structure" type="radio" id="simple" name="structure" value="simple">
+                       <label class="text checkbox-text" for="simple"> Простая </label><br>
+                   </li>
+                   <li class="element-of-list">
+                       <input class="checkbox-structure" type="radio" id="hard" name="structure" value="hard">
+                       <label class="text checkbox-text" for="hard"> Сложная </label><br>
+                   </li>
+               </ul>
+               <button class="button" type="submit"><p>Далее</p></button>
+            </form>
+        </div>
+    </div>
+
+    {% endif %}
+
+    {% if structure == "simple" or structure == "hard" %}
+
+    <div class="container management-process-item-risk-reliability management-process-item-risk-reliability-description">
+        <div class="div-for-risk-reliability div-for-risk-reliability-description">
+            <p class="management-process-item-text text"> Для оценки рисков системы используются элементы, которые ассоциируются с действиями процесса управления решениями.</p>
+            <p class="management-process-item-text text"> Укажите исходные данные для оценки риска нарушения надёжности реализации процесса управления решениями: </p>
+        </div>
+    </div>
+
+    <div class="container management-process-item-risk-reliability management-process-item-parameters">
+        <form class="form-risk-reliability" method="post" action="decision_management_process/next-2">
+
+        <!-- первый параметр -->
+
+        <div class="div-for-risk-reliability">
+            <div class="div-for-risk-reliability-description-item">
+                <p class="management-process-item-text text"> <!-- σ --> Частота возникновения источников угроз нарушения надёжности реализации процесса: </p>
+            </div>
+
+            <!-- для первого элемента -->
+
+            <!-- при планировании нарушения процесса -->
+
+            <div class="action-plan">
+                <p class="management-process-item-text text"> При планировании нарушения процесса: </p>
+                <div class="parameter-for-risk-2 sigma flex-parameter">
+                    <div class="flex-parameter-row flex-parameter-row-label">
+                        <label class="label-parameter text"> Для производственного процесса: </label>
+                    </div>
+                    <div class="flex-parameter-row">
+                        <input class="input-parameters-for-risk-2" type="number" name="sigma-value-1" value="sigma-value-1">
+                        <select name="sigma-1-time" class="select-parameter select-sigma">
+                          <option value="sec"> Секунды </option>
+                          <option value="min"> Минуты </option>
+                          <option value="day"> Дни </option>
+                          <option value="week"> Недели </option>
+                          <option value="month"> Месяцы </option>
+                          <option value="year"> Года </option>
+                        </select>
+                    </div>
+                </div>
+
+
+            <!-- для второго элемента -->
+
+                <div class="parameter-for-risk-2 sigma flex-parameter">
+                    <div class="flex-parameter-row flex-parameter-row-label">
+                        <label class="label-parameter text"> Для процесса технического обсулживания: </label>
+                    </div>
+                    <div class="flex-parameter-row">
+                        <input class="input-parameters-for-risk-2" type="number" name="sigma-value-2" value="sigma-value-2">
+                        <select name="sigma-2-time" class="select-parameter select-sigma">
+                          <option value="sec"> Секунды </option>
+                          <option value="min"> Минуты </option>
+                          <option value="day"> Дни </option>
+                          <option value="week"> Недели </option>
+                          <option value="month"> Месяцы </option>
+                          <option value="year"> Года </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- для третьего элемента -->
+
+                <div class="parameter-for-risk-2 sigma flex-parameter">
+                    <div class="flex-parameter-row flex-parameter-row-label">
+                        <label class="label-parameter text"> Для процесса контроля качества: </label>
+                    </div>
+                    <div class="flex-parameter-row">
+                        <input class="input-parameters-for-risk-2" type="number" name="sigma-value-3" value="sigma-value-3">
+                        <select name="sigma-3-time" class="select-parameter select-sigma">
+                          <option value="sec"> Секунды </option>
+                          <option value="min"> Минуты </option>
+                          <option value="day"> Дни </option>
+                          <option value="week"> Недели </option>
+                          <option value="month"> Месяцы </option>
+                          <option value="year"> Года </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- для четвёртого элемента -->
+
+                <div class="parameter-for-risk-2 sigma flex-parameter">
+                    <div class="flex-parameter-row flex-parameter-row-label">
+                        <label class="label-parameter text"> Для процесса инвентаризации: </label>
+                    </div>
+                    <div class="flex-parameter-row">
+                        <input class="input-parameters-for-risk-2" type="number" name="sigma-value-4" value="sigma-value-4">
+                        <select name="sigma-4-time" class="select-parameter select-sigma">
+                          <option value="sec"> Секунды </option>
+                          <option value="min"> Минуты </option>
+                          <option value="day"> Дни </option>
+                          <option value="week"> Недели </option>
+                          <option value="month"> Месяцы </option>
+                          <option value="year"> Года </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- для пятого элемента -->
+
+            <!-- при принятии решений и управлении решениями -->
+
+            <div class="action-plan">
+                <p class="management-process-item-text text"> При планировании нарушения процесса: </p>
+                <div class="parameter-for-risk-2 sigma flex-parameter">
+                    <div class="flex-parameter-row flex-parameter-row-label">
+                        <label class="label-parameter text"> Для процесса технического обсулживания: </label>
+                    </div>
+                    <div class="flex-parameter-row">
+                        <input class="input-parameters-for-risk-2" type="number" name="parameter" value="sigma-value">
+                        <select class="select-parameter select-sigma">
+                          <option> Секунды </option>
+                          <option> Минуты </option>
+                          <option> Дни </option>
+                          <option> Недели </option>
+                          <option> Месяцы </option>
+                          <option> Года </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- для шестого элемента -->
+
+                <div class="parameter-for-risk-2 sigma flex-parameter">
+                    <div class="flex-parameter-row flex-parameter-row-label">
+                        <label class="label-parameter text"> Для процесса технического обсулживания: </label>
+                    </div>
+                    <div class="flex-parameter-row">
+                        <input class="input-parameters-for-risk-2" type="number" name="parameter" value="sigma-value">
+                        <select class="select-parameter select-sigma">
+                          <option> Секунды </option>
+                          <option> Минуты </option>
+                          <option> Дни </option>
+                          <option> Недели </option>
+                          <option> Месяцы </option>
+                          <option> Года </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- для седьмого элемента -->
+
+                <div class="parameter-for-risk-2 sigma flex-parameter">
+                    <div class="flex-parameter-row flex-parameter-row-label">
+                        <label class="label-parameter text"> Для процесса технического обсулживания: </label>
+                    </div>
+                    <div class="flex-parameter-row">
+                        <input class="input-parameters-for-risk-2" type="number" name="parameter" value="sigma-value">
+                        <select class="select-parameter select-sigma">
+                          <option> Секунды </option>
+                          <option> Минуты </option>
+                          <option> Дни </option>
+                          <option> Недели </option>
+                          <option> Месяцы </option>
+                          <option> Года </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- для восьмого элемента -->
+
+                <div class="parameter-for-risk-2 sigma flex-parameter">
+                    <div class="flex-parameter-row flex-parameter-row-label">
+                        <label class="label-parameter text"> Для процесса технического обсулживания: </label>
+                    </div>
+                    <div class="flex-parameter-row">
+                        <input class="input-parameters-for-risk-2" type="number" name="parameter" value="sigma-value">
+                        <select class="select-parameter select-sigma">
+                          <option> Секунды </option>
+                          <option> Минуты </option>
+                          <option> Дни </option>
+                          <option> Недели </option>
+                          <option> Месяцы </option>
+                          <option> Года </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- второй параметр -->
+
+        <div class="div-for-risk-reliability">
+            <div class="div-for-risk-reliability-description-item">
+                <p class="management-process-item-text text"> <!-- β --> Среднее время развития угроз для элемента с момента возникновения источников угроз до нарушения с возможным ущербом: </p>
+            </div>
+            <div class="parameter-for-risk-2 beta">
+
+                <input class="input-parameters-for-risk-2" type="number" name="parameter" value="beta-value">
+                <select class="select-parameter select-beta">
+                  <option> Секунды </option>
+                  <option> Минуты </option>
+                  <option> Дни </option>
+                  <option> Недели </option>
+                  <option> Месяцы </option>
+                  <option> Года </option>
+                </select>
+            </div>
+        </div>
+
+        <!-- третий параметр -->
+
+        <div class="div-for-risk-reliability">
+            <div class="div-for-risk-reliability-description-item">
+                <p class="management-process-item-text text"> <!-- T(меж) --> Среднее время между окончанием предыдущей и началом очередной диагностики возможностей элемента: </p>
+            </div>
+            <div class="parameter-for-risk-2 T-mesh">
+                <input class="input-parameters-for-risk-2" type="number" name="parameter" value="T-mesh-value">
+                <select class="select-parameter select-T-mesh">
+                  <option> Секунды </option>
+                  <option> Минуты </option>
+                  <option> Дни </option>
+                  <option> Недели </option>
+                  <option> Месяцы </option>
+                  <option> Года </option>
+                </select>
+            </div>
+        </div>
+
+        <!-- четвертый параметр -->
+
+        <div class="div-for-risk-reliability">
+            <div class="div-for-risk-reliability-description-item">
+                <p class="management-process-item-text text"> <!-- T(диаг) --> Среднее время диагностики состояния элемента: </p>
+            </div>
+            <div class="parameter-for-risk-2 T-diag">
+                <input class="input-parameters-for-risk-2" type="number" name="parameter" value="T-diag-value">
+                <select class="select-parameter select-T-diag">
+                  <option> Секунды </option>
+                  <option> Минуты </option>
+                  <option> Дни </option>
+                  <option> Недели </option>
+                  <option> Месяцы </option>
+                  <option> Года </option>
+                </select>
+            </div>
+        </div>
+
+        <!-- пятый параметр нужно будет указывать период так что надо исправить -->
+
+        <div class="div-for-risk-reliability">
+            <div class="div-for-risk-reliability-description-item">
+                <p class="management-process-item-text text"> <!-- T(зад) --> Задаваемая длительность периода прогноза: </p>
+            </div>
+            <div class="parameter-for-risk-2 T-zad">
+                <input class="input-parameters-for-risk-2" type="number" name="parameter" value="T-zad-value">
+
+                <!--
+
+                <select class="select-parameter select-T-zad">
+                  <option> Секунды </option>
+                  <option> Минуты </option>
+                  <option> Дни </option>
+                  <option> Недели </option>
+                  <option> Месяцы </option>
+                  <option> Года </option>
+                </select>
+
+                -->
+
+            </div>
+        </div>
+
+        <!-- шестой параметр -->
+
+        <div class="div-for-risk-reliability">
+            <div class="div-for-risk-reliability-description-item">
+                <p class="management-process-item-text text"> <!-- T(восст) --> Среднее время между окончанием предыдущей и началом очередной диагностики возможностей элемента: </p>
+            </div>
+            <div class="parameter-for-risk-2 T-vosst">
+                <input class="input-parameters-for-risk-2" type="number" name="parameter" value="T-vosst-value">
+                <select class="select-parameter select-T-vosst">
+                  <option> Секунды </option>
+                  <option> Минуты </option>
+                  <option> Дни </option>
+                  <option> Недели </option>
+                  <option> Месяцы </option>
+                  <option> Года </option>
+                </select>
+            </div>
+        </div>
+        </form>
+    </div>
+
+
+    {% endif %}
+</div>
+
+</body>
+</html>

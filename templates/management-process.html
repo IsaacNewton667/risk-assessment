@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Оценка рисков ЖЦ ИС</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+</head>
+<body>
+
+<div class="main-header">
+    <div class="div-title">
+        <h1><a href="{{ url_for('main') }}">Оценка рисков Жизненных Циклов Информационной Системы</a></h1>
+    </div>
+    <nav class="list-of-ststs">
+        <ul class="navigation-list">
+            <li class="element-of-list"><a class="text-process" href="{{ url_for('decision_management_process') }}">Процесс упраления решениями</a></li>
+            <li class="element-of-list"><a class="text-process" href="">ГОСТ Р 59000-2021</a></li>
+            <li class="element-of-list"><a class="text-process" href="">ГОСТ Р 59000-2021</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="main-body management-process-main">
+    <div class="container management-process-title">
+        <div class="management-process-title-inner">
+            <h2 class="management-process-item-text management-process-item-title-text">Оценка рисков процесса управления решениями</h2>
+        </div>
+    </div>
+
+    <div class="container management-process-item management-process-item-system">
+        <p class="management-process-item-text text"> При оценке рисков процесса управления решениями структуру рсистемы разделяют на "<abbr title="Система из единственного элемента или множества элементов, объединенных для анализа как один элемент">простую</abbr>" и "<abbr title="Совокупность взаимодействующих элементов">сложную</abbr>".</p>
+        <p class="management-process-item-text text"> В зависимости от структуры происходит дальнейшая оценка рисков по трём количественным показателям:</p>
+        <p class="management-process-item-text text"> – риску нарушения надёжности реализации процесса управления  решениями; </p>
+        <p class="management-process-item-text text"> – риску нарушения требований по защите информации в процессе управления решениями; </p>
+        <p class="management-process-item-text text"> – интегральный риск нарушения реализации процесса управления решениями с учётом требований по защите информации.</p>
+        <p class="management-process-item-text text"> Также уточните, есть ли необходимость учитывать <abbr title="При критичности качества информации действия сбора и анализа качества информации рассматриваются отдельно. Дополнительно применяются модели и методы оценки качества выходной информации по ГОСТ Р 59341">качество информации</abbr>.</p>
+        <p class="management-process-item-text text"> Выберите <span  class="tooltip">структуру</span> оцениваемой системы: </p>
+        <div class="div-for-structure-form">
+            <form class="form-structure" method="post" action="decision-management-process/next-1">
+                <ul class="list-of-structure">
+                    <li class="element-of-list">
+                        <input class="checkbox-structure" type="radio" id="simple" name="structure" value="simple">
+                        <label class="text checkbox-text" for="simple"> Простая </label><br>
+                    </li>
+                    <li class="element-of-list">
+                        <input class="checkbox-structure" type="radio" id="hard" name="structure" value="hard">
+                        <label class="text checkbox-text" for="hard"> Сложная </label><br>
+                    </li>
+                    <li class="element-of-list">
+                        <input class="checkbox-structure" type="checkbox" id="quality-of-information" name="quality-of-information" value="True">
+                        <label class="text checkbox-text" for="quality-of-information">Учитывать качество информации</label>
+                    </li>
+                </ul>
+               <button class="button" type="submit"><p>Далее</p></button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

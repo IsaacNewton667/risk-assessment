@@ -1,0 +1,389 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    overflow:  hidden;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.text {
+    font-size: 20px;
+    padding: 5px;
+}
+
+.not_found {
+    color: black;
+}
+
+a {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+body{
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+
+    background-color: green;
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.main-header{
+    background-color: #262020;
+    flex-grow: 0;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.div-title{
+    padding: 10px;
+}
+
+h1{
+
+    color: ghostwhite;
+    text-align: center;
+    padding: 10px;
+}
+
+.list-of-ststs {
+
+    flex-grow: 1;
+
+}
+
+.navigation-list{
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+.element-of-list {
+
+    float: left;
+    width: auto;
+    height: auto;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}
+
+a {
+    color: ghostwhite;
+}
+
+/*index.html*/
+
+.index-title{
+    margin: 15px;
+}
+
+.main-body {
+    /* overflow: scroll; */
+
+    background-color: white;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+}
+
+.container {
+    background-color: white;
+
+
+}
+
+.main-dis {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.dis {
+    text-align: center;
+    padding: 15px;
+}
+
+/* management-process */
+
+.management-process-main{
+
+}
+
+.management-process-title{
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    align-items: space-around;
+}
+
+.management-process-title-inner {
+    display: table-cell;
+    vertical-align: middle;
+
+              /* 2 */
+}
+
+.management-process-item {
+
+
+    padding: 20px;
+}
+
+.management-process-item-system {
+    flex-grow: 8;
+}
+
+.management-process-item-risk-reliability-description {
+    flex-grow: 1;
+}
+
+/* text for management-process */
+
+.management-process-item-title-text {
+    font-size: 40px;
+    margin: 15px;
+
+}
+
+/* подсказка
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+
+
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+
+
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+*/
+
+
+/* формы ввода */
+
+input {
+    background: #E9EFF6;
+    padding: 0.5rem;
+    border-color: black;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+/* красивые радио кнопки */
+
+.checkbox-structure {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+/* для элемента input c type="radio" */
+.checkbox-structure-radio {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+  /* для элемента label связанного с .custom-radio */
+.checkbox-structure+label {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+}
+
+.checkbox-text {
+    margin-left: 2px;
+}
+  /* создание в label псевдоэлемента  before со следующими стилями */
+
+.checkbox-structure+label::before {
+    content: '';
+    display: inline-block;
+    width: 0.75em;
+    height: 0.75em;
+    flex-shrink: 0;
+    flex-grow: 0;
+    border: 0.75px solid #adb5bd;
+    border-radius: 100%;
+    margin-right: 0.35em;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+}
+  /* стили при наведении курсора на радио */
+.checkbox-structure:not(:disabled):not(:checked)+label:hover::before {
+    border-color: #b3d7ff;
+    background-color: #b3d7ff;
+}
+  /* стили для активной радиокнопки (при нажатии на неё) */
+.checkbox-structure:not(:disabled):active+label::before {
+    background-color: #b3d7ff;
+    border-color: #b3d7ff;
+}
+  /* стили для радиокнопки, находящейся в фокусе */
+.checkbox-structure:focus+label::before {
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+  /* стили для радиокнопки, находящейся в фокусе и не находящейся в состоянии checked */
+.checkbox-structure:focus:not(:checked)+label::before {
+    border-color: #53a0e3;
+    background-color: #b3d7ff;
+}
+  /* стили для радиокнопки, находящейся в состоянии checked */
+.checkbox-structure:checked+label::before {
+    border-color: #0b76ef;
+    background-color: #0b76ef;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23fff'/%3e%3c/svg%3e");
+}
+  /* стили для радиокнопки, находящейся в состоянии disabled */
+.checkbox-structure:disabled+label::before {
+    background-color: #e9ecef;
+    background-image: none;
+}
+
+/* кнопка */
+
+.button {
+    display: inline-block;
+    background-color: white;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    border-color: black;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.button:hover {
+    transition: 200ms;
+    background-color: black;
+    color: white;
+}
+
+/* конец кнопки */
+
+.div-for-structure-form {
+    width: 260px;
+}
+
+.form-structure {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* ввод */
+
+.management-process-item-parameters {
+    flex-grow: 2;
+
+}
+
+/* sigma */
+
+.management-process-item-parameters {
+    display: flex;
+    flex-direction: column;
+}
+
+.div-for-risk-reliability {
+    margin: 5px;
+}
+
+.parameter-for-risk-2 {
+    margin: 10px;
+}
+
+.flex-parameter {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+
+}
+
+.flex-parameter-row-label {
+    width: 400px;
+}
+
+.flex-parameter-row {
+    display: flex;
+    flex-direction: column;
+}
+
+.label-parameter{
+
+}
+
+.input-parameters-for-risk-2 {
+    width: 80px;
+    margin-top: 5px;
+}
+
+.select-parameter {
+    width: 100px;
+}
+
+.div-for-risk-reliability-description-item {
+    margin: 5px;
+}
+
+/* стили для элементов */
+
+.element-number {
+    margin-bottom: 10px;
+}
+/*
+.risk-element {
+    border: 2px solid black;
+}
+
+ */
+
+.text-process {
+    font-size: 20px;
+}

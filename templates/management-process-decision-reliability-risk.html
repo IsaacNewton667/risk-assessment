@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Оценка рисков ЖЦ ИС</title>
+    <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet">
+
+    <script src="{{ url_for('static', filename='js/buttonLogicReliability.js') }}"></script>
+</head>
+<body>
+
+<div class="main-header">
+    <div class="div-title">
+        <h1><a href="{{ url_for('main') }}">Оценка рисков Жизненных Циклов Информационной Системы</a></h1>
+    </div>
+    <nav class="list-of-ststs">
+        <ul class="navigation-list">
+            <li class="element-of-list"><a class="text-process" href="{{ url_for('decision_management_process') }}">Процесс упраления решениями</a></li>
+            <li class="element-of-list"><a class="text-process" href="">ГОСТ Р 59000-2021</a></li>
+            <li class="element-of-list"><a class="text-process" href="">ГОСТ Р 59000-2021</a></li>
+        </ul>
+    </nav>
+</div>
+
+<div class="main-body management-process-main">
+    <div class="container management-process-title">
+        <div class="management-process-title-inner">
+            <h2 class="management-process-item-text management-process-item-title-text">Оценка рисков процесса управления решениями</h2>
+        </div>
+    </div>
+
+    <div class="container management-process-item-risk-reliability management-process-item-risk-reliability-description">
+        <div class="div-for-risk-reliability div-for-risk-reliability-description">
+            <p class="management-process-item-text text"> Для оценки рисков системы используются элементы, которые ассоциируются с действиями процесса управления решениями.</p>
+           <!-- <p class="management-process-item-text text"> Укажите исходные данные для оценки риска нарушения надёжности реализации процесса управления решениями: </p> -->
+        </div>
+
+        <div class="container management-process-item-risk-reliability management-process-item-parameters">
+            <form id="myForm" class="form-risk-reliability" method="post" action="/decision-management-process/next-3">
+
+            <div class="div-for-risk-reliability">
+
+                <!-- при планировании нарушения процесса -->
+
+                <div class="action-plan">
+                    <p class="management-process-item-text text"> Укажите исходные данные для оценки риска нарушения надёжности реализации процесса управления решениями: </p>
+                    <div class="parameter-for-risk-2 sigma flex-parameter risk-element risk-reliability-element">
+                        <div class="flex-parameter-row flex-parameter-row-label element-number">
+                            <label class=" label-parameter text"> Для {{ idClient }} элемента: </label>
+                        </div>
+                        <div class="flex-parameter-row">
+                            <label class="label-parameter text"> Частота возникновения источников угроз нарушения надёжности реализации процесса: </label>
+                            <input class="input-parameters-for-risk-2" type="number" name="alfa" value="alfa-value">
+                            <select name="alfaTime"  class="select-parameter select-sigma">
+                                <option value="sec"> Секунды </option>
+                                <option value="min"> Минуты </option>
+                                <option value="hour"> Часы </option>
+                                <option value="day"> Дни </option>
+                                <option value="week"> Недели </option>
+                                <option value="month"> Месяцы </option>
+                                <option value="year"> Года </option>
+                            </select>
+                        </div>
+
+                        <div class="flex-parameter-row">
+                            <label class="label-parameter text"> Среднее время развития угроз для элемента с момента возникновения источников угроз до нарушения с возможным ущербом: </label>
+                            <input class="input-parameters-for-risk-2" type="number" name="beta" value="beta-value">
+                            <select name="betaTime" class="select-parameter select-beta">
+                                <option value="sec"> Секунды </option>
+                                <option value="min"> Минуты </option>
+                                <option value="hour"> Часы </option>
+                                <option value="day"> Дни </option>
+                                <option value="week"> Недели </option>
+                                <option value="month"> Месяцы </option>
+                                <option value="year"> Года </option>
+                            </select>
+                        </div>
+
+                        <div class="flex-parameter-row">
+                            <label class="label-parameter text"> Среднее время между окончанием предыдущей и началом очередной диагностики целостности элемента: </label>
+                            <input class="input-parameters-for-risk-2" type="number" name="Tmesh" value="T-mesh-value">
+                            <select name="TmeshTime" class="select-parameter select-T-mesh">
+                                <option value="sec"> Секунды </option>
+                                <option value="min"> Минуты </option>
+                                <option value="hour"> Часы </option>
+                                <option value="day"> Дни </option>
+                                <option value="week"> Недели </option>
+                                <option value="month"> Месяцы </option>
+                                <option value="year"> Года </option>
+                            </select>
+                        </div>
+
+                        <div class="flex-parameter-row">
+                            <label class="label-parameter text"> Среднее время диагностики состояния элемента: </label>
+                            <input class="input-parameters-for-risk-2" type="number" name="Tdiag" value="T-diag-value">
+                            <select name="TdiagTime" class="select-parameter select-T-diag">
+                                <option value="sec"> Секунды </option>
+                                <option value="min"> Минуты </option>
+                                <option value="hour"> Часы </option>
+                                <option value="day"> Дни </option>
+                                <option value="week"> Недели </option>
+                                <option value="month"> Месяцы </option>
+                                <option value="year"> Года </option>
+                            </select>
+                        </div>
+
+                        <div class="flex-parameter-row">
+                            <label class="label-parameter text"> Среднее время восстановления нарушаемой целостности элемента: </label>
+                            <input class="input-parameters-for-risk-2" type="number" name="Tvost" value="T-vost-value">
+                            <select name="TvostTime" class="select-parameter select-T-vost">
+                                <option value="sec"> Секунды </option>
+                                <option value="min"> Минуты </option>
+                                <option value="hour"> Часы </option>
+                                <option value="day"> Дни </option>
+                                <option value="week"> Недели </option>
+                                <option value="month"> Месяцы </option>
+                                <option value="year"> Года </option>
+                            </select>
+                        </div>
+
+                        <div class="flex-parameter-row">
+                            <label class="label-parameter text"> Длительность периода прогноза: </label>
+                            <input class="input-parameters-for-risk-2" type="number" name="Tzad" value="T-zad-value">
+                            <select name="TzadTime" class="select-parameter select-T-zad">
+                                <option value="sec"> Секунды </option>
+                                <option value="min"> Минуты </option>
+                                <option value="hour"> Часы </option>
+                                <option value="day"> Дни </option>
+                                <option value="week"> Недели </option>
+                                <option value="month"> Месяцы </option>
+                                <option value="year"> Года </option>
+                            </select>
+                        </div>
+                    </div>
+                    <button id="addButton" class="button" type="submit"><p>Добавить элемент</p></button>
+                    <button id="nextButton" class="button" type="submit"><p>Далее</p></button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
