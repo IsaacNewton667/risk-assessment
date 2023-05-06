@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for, send_from_
 from os import path
 
 app = Flask(__name__)
-app.config["CLIENT_REPORTS"] = r"static\reports"
+app.config["CLIENT_REPORTS"] = str(Path("static", "reports"))
 
 "results = None"
 structure = None
@@ -307,4 +307,4 @@ def page_not_found(e):
     return render_template('500.html'), 500
 
 
-app.run()
+app.run(host="0.0.0.0")
